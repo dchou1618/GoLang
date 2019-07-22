@@ -1,0 +1,12 @@
+# Design Patterns - Important
+
+# System Design:
+
+(1) Dependencies between modules in program
+  - how would expand project
+  - share libraries/components
+  - ways to break up program into components
+  - classes in program
+(2) Simplicity/One-Way Data Flow
+  - Controller, View, Data Objects
+  - Each class has single responsibility*

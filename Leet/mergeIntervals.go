@@ -69,4 +69,4 @@ func merge(intervals [][]int) [][]int {
     }
     return intervals;
 } // sorting inplace can allow for O(nlogn) time complexity
-// although 
+// although

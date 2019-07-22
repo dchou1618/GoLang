@@ -11,16 +11,24 @@ type ListNode struct {
     Next *ListNode
 }
 
-func reverseLst(l1 *ListNode) {
-    currNode := l1;
-    prevNode := nil;
-    for (currNode != nil) {
-        nextNode := currNode.Next;
-        currNode.Next = prevNode;
-        prevNode = currNode;
-        currNode = nextNode;
+func reverseList(head *ListNode) *ListNode {
+    if (head == nil) {
+        return head;
     }
+    var prevNode *ListNode;
+    currNode := head;
+    temp := currNode.Next;
+    for (currNode != nil) {
+        temp = currNode.Next;
+        currNode.Next = prevNode;
+
+        prevNode = currNode;
+        currNode = temp;
+    }
+    head = prevNode;
+    return head;
 }
+
 func lstLength(l1 *ListNode) (int) {
     currNode := l1;
     length := 0;
