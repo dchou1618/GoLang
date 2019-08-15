@@ -7,6 +7,31 @@ import (
   "fmt"
 )
 
+type NumArray struct {
+    cumulativeSum []int
+}
+
+
+func Constructor(nums []int) NumArray {
+    this := new(NumArray);
+    this.cumulativeSum = make([]int, len(nums));
+    currSum := 0;
+    for i, val := range nums {
+        currSum += val;
+        this.cumulativeSum[i] = currSum;
+    }
+    return *this;
+}
+
+
+func (this *NumArray) SumRange(i int, j int) int {
+    if (i == 0) {
+        return this.cumulativeSum[j];
+    } else {
+        return this.cumulativeSum[j]-this.cumulativeSum[i-1];
+    }
+}
+
 
 // count of range sum - segment tree
 

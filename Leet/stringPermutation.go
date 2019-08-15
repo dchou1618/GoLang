@@ -1,6 +1,6 @@
 // file stringPermutation.go
-// Dylan
-// dvchou
+// name: Dylan
+// id: dvchou
 
 package main
 
@@ -38,4 +38,30 @@ func checkInclusion(s1 string, s2 string) bool {
     i := 0;
     m1 := stringToMap(s1);
     return matchInclusion(s1,s2,m1,i);
+}
+
+
+// other string manipulation
+// objective is to memoize solution so dp[i][j] stores values of
+// different lengths of
+func isInterleave(s1 string, s2 string, s3 string) bool {
+    if (len(s1) == 0 && len(s2) == 0 && len(s3) == 0) {
+        return true;
+    } else {
+        if (len(s1) > 0 && len(s3) > 0 && s1[0] == s3[0]) {
+            if (len(s2) > 0 && len(s3) > 0 && s2[0] == s3[0]) {
+                return isInterleave(s1[1:], s2, s3[1:]) || isInterleave(s1, s2[1:], s3[1:]);
+            } else {
+                return isInterleave(s1[1:], s2, s3[1:]);
+            }
+        } else if (len(s2) > 0 && len(s3) > 0 && s2[0] == s3[0]) {
+            return isInterleave(s1, s2[1:], s3[1:]);
+        } else {
+            return false;
+        }
+    }
+}
+
+func main() {
+    
 }

@@ -60,3 +60,86 @@ func getIntersectionNode(headA, headB *ListNode) *ListNode {
         return getIntersect(headA,headB);
     }
 }
+
+// push node to delete to the end of the linked list
+func deleteNode(node *ListNode) {
+    currNode := node;
+    for (currNode != nil && currNode.Next != nil) {
+        var val int = currNode.Next.Val;
+        currNode.Next.Val = currNode.Val;
+        currNode.Val = val;
+        if (currNode.Next.Next == nil) {
+            currNode.Next = currNode.Next.Next;
+            break;
+        }
+        currNode = currNode.Next;
+    }
+}
+
+func swapPairs(head *ListNode) *ListNode {
+    if (head == nil || head.Next == nil) {
+        return head;
+    }
+    var prev *ListNode = head;
+    var curr *ListNode = head.Next;
+    var temp *ListNode;
+    for (curr != nil) {
+        if (curr != nil && curr.Next != nil && curr.Next.Next != nil) {
+            temp = curr.Next.Next;
+        } else {
+            temp = curr.Next;
+        }
+        if (curr == head.Next) {
+            head = curr;
+        }
+        var nextPrev *ListNode = curr.Next;
+        curr.Next = prev;
+        prev.Next = temp;
+        prev = nextPrev;
+        curr = temp;
+    }
+    return head;
+}
+
+
+// rotate linked list
+
+func lstLength(head *ListNode) int {
+    var length int = 0;
+    var currNode *ListNode = head;
+
+    for (currNode != nil) {
+        currNode = currNode.Next;
+        length++;
+    }
+    return length;
+}
+func rotateRight(head *ListNode, k int) *ListNode {
+    if (k == 0 || head == nil) {
+        return head;
+    }
+    var length int = lstLength(head);
+    if (k%length == 0) {
+        return head;
+    }
+    k %= length;
+    var currNode *ListNode = head;
+    var rotateStart *ListNode;
+    var currNum int = 0;
+    for (currNode != nil) {
+        if (currNum+1 == length-k) {
+            rotateStart = currNode.Next;
+            var start *ListNode = rotateStart;
+            currNode.Next = nil;
+            for (rotateStart != nil && rotateStart.Next != nil) {
+                rotateStart = rotateStart.Next;
+            }
+            rotateStart.Next = head;
+            head = start;
+            break;
+        }
+        currNum++;
+        currNode = currNode.Next;
+    }
+    return head;
+}
