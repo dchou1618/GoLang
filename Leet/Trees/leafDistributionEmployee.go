@@ -1,5 +1,4 @@
 /* file leafDistribution.go aims to construct and query a decision tree
-
 */
 
 package main
@@ -8,6 +7,7 @@ import (
     "fmt"
     "math"
 )
+
 
 type Employee struct {
     Name string
@@ -18,12 +18,12 @@ type Employee struct {
 }
 
 type decisionNode struct {
-    e *Employee
-    left *decisionNode
-    right *decisionNode
-}
+    e *Employee;
+    left *decisionNode;
+    right *decisionNode;
+};
 
-func sortEmployees(vals []interface) []interface {
+func sortEmployees(vals []interface{}) []interface{} {
     newVals := []interface{}; // doesn't make sense to split on name
     for _, elem := range vals {
         var indexToInsert int = -1;
@@ -107,6 +107,6 @@ func main() {
     employee2 := &Employee{"Bo", 25, 10, 120000, "IT"};
     employee3 := &Employee{"Rufus", 29, 1, 90000, "Sales"};
     employee4 := &Employee{"Monroe", 19, 2, 60000, "Production"};
-    var employees []*Employee = {employee1, employee2, employee3, employee4};
-    fmt.Println();
+    employees := []*Employee{employee1, employee2, employee3, employee4};
+    fmt.Println(constructDecisionTree(employees));
 }

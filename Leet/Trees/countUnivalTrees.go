@@ -40,7 +40,6 @@ type Node struct {
 // O(n) sol'n
 func numUVT(root *Node) (int, bool) {
     if (root != nil) {
-
         leftCount, isLeftUnival := numUVT(root.left);
         rightCount, isRightUnival := numUVT(root.right);
         if (root.left == nil && root.right == nil) {

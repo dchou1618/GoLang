@@ -2,6 +2,11 @@
 // implements storage of letters and isWord booleans to determine
 // if a prefix is in a dictionary.
 
+package main
+
+import (
+    "fmt"
+)
 // using a trie - prefix tree
 // contains 26 entries for children Trie nodes of all letters from alphabet
 type Trie struct {

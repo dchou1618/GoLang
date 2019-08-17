@@ -1,4 +1,4 @@
-// file
+// numLongestSequence.go file
 
 package main;
 

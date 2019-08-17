@@ -5,6 +5,11 @@ import (
   "fmt"
 )
 
+type ListNode struct {
+    Val int;
+    Next *ListNode;
+};
+
 func nextLargerNodes(head *ListNode) []int {
     nextLargest := []int{};
     startNode := head;
@@ -30,5 +35,5 @@ func nextLargerNodes(head *ListNode) []int {
 }
 
 func main() {
-  
+
 }

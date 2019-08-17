@@ -1,5 +1,5 @@
-// file maxDistBinaryPrefix.go uses
-
+// file maxDistBinaryPrefix.go
+// needs WORK
 package main
 
 import (
